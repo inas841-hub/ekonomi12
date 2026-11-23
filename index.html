@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ujian Akhir Semester Ganjil – Ekonomi XII</title>
+<style>
+:root{--bg1:#4f46e5;--bg2:#06b6d4;--bg3:#f472b6;--card:#ffffff;--ink:#1e1b4b;--mute:#64748b;--line:#e2e8f0;--soft:#f1f5f9;
+--pri:#4f46e5;--pri2:#7c3aed;--ok:#16a34a;--warn:#f59e0b;--bad:#dc2626;--none:#e2e8f0;--noneink:#334155;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--card:#1e1b3a;--ink:#eef2ff;--mute:#a5b4fc;--line:#3b3768;--soft:#2a2650;--none:#3b3768;--noneink:#e0e7ff}}
+:root[data-theme="dark"]{--card:#1e1b3a;--ink:#eef2ff;--mute:#a5b4fc;--line:#3b3768;--soft:#2a2650;--none:#3b3768;--noneink:#e0e7ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:linear-gradient(135deg,var(--bg1),var(--bg2) 55%,var(--bg3));background-attachment:fixed;-webkit-user-select:none;user-select:none}
+.wrap{max-width:1100px;margin:0 auto;padding:16px}
+.card{background:var(--card);border-radius:20px;box-shadow:0 12px 40px rgba(30,27,75,.25);padding:24px}
+.hide{display:none!important}
+/* login */
+.login{max-width:480px;margin:4vh auto 0}
+.logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--pri),var(--bg3));display:grid;place-items:center;font-size:38px;margin:0 auto 10px;box-shadow:0 8px 20px rgba(79,70,229,.4)}
+h1{margin:0;text-align:center;font-size:1.35rem}
+.sub{text-align:center;color:var(--mute);margin:4px 0 18px;font-size:.92rem}
+label{display:block;font-weight:600;font-size:.86rem;margin:12px 0 5px}
+input,select{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:12px;font-size:1rem;background:var(--soft);color:var(--ink);font-family:inherit;-webkit-user-select:text;user-select:text}
+input:focus,select:focus{outline:none;border-color:var(--pri);background:var(--card)}
+input[readonly]{opacity:.75}
+.btn{border:0;border-radius:12px;padding:12px 20px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:transform .1s,filter .15s}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.97)}
+.btn.main{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;width:100%;margin-top:18px;padding:14px}
+.err{color:var(--bad);font-size:.88rem;margin-top:8px;min-height:1.2em;text-align:center}
+.rules{background:var(--soft);border-radius:12px;padding:10px 14px;margin-top:14px;font-size:.82rem;color:var(--mute)}
+.rules b{color:var(--ink)}
+.rules ul{margin:4px 0 0;padding-left:18px}
+/* exam */
+.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--card);border-radius:16px;padding:12px 16px;box-shadow:0 8px 24px rgba(30,27,75,.2);position:sticky;top:max(8px,env(safe-area-inset-top,0px));z-index:5}
+.who{font-size:.85rem;line-height:1.35}.who b{font-size:1rem}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:1.3rem;padding:8px 16px;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.timer.low{background:linear-gradient(135deg,#f59e0b,#dc2626);animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.grid{display:grid;grid-template-columns:1fr 300px;gap:16px;margin-top:14px;align-items:start}
+.qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;flex-wrap:wrap}
+.qno{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff;padding:6px 14px;border-radius:999px;font-weight:700}
+.flag{background:#fef3c7;color:#92400e;padding:4px 10px;border-radius:999px;font-size:.78rem;font-weight:700}
+.qtext{font-size:1.05rem;line-height:1.6;margin-bottom:16px}
+.qimg{max-width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;background:#fff}
+.tw{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+th{background:var(--soft)}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:2px solid var(--line);border-radius:14px;margin-bottom:10px;cursor:pointer;background:var(--card);transition:all .15s;text-align:left;width:100%;font:inherit;color:inherit;line-height:1.5}
+.opt:hover{border-color:var(--pri);background:var(--soft)}
+.opt .l{flex:0 0 32px;height:32px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:800;color:var(--pri)}
+.opt.sel{border-color:var(--pri);background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(124,58,237,.12))}
+.opt.sel .l{background:var(--pri);color:#fff}
+.nav{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.nav .btn{flex:1;min-width:110px}
+.b-prev{background:var(--soft);color:var(--ink)}
+.b-doubt{background:var(--warn);color:#fff}
+.b-doubt.on{background:#b45309}
+.b-next{background:linear-gradient(135deg,var(--pri),var(--pri2));color:#fff}
+.b-fin{background:linear-gradient(135deg,#16a34a,#059669);color:#fff}
+.side h3{margin:0 0 10px;font-size:1rem}
+.pal{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.pal button{aspect-ratio:1;border:2px solid transparent;border-radius:10px;font-weight:800;font-size:.95rem;cursor:pointer;background:var(--none);color:var(--noneink);font-family:inherit}
+.pal button.ans{background:var(--ok);color:#fff}
+.pal button.dbt{background:var(--warn);color:#fff}
+.pal button.cur{border-color:var(--ink);box-shadow:0 0 0 3px rgba(79,70,229,.45)}
+.legend{display:grid;gap:6px;margin-top:14px;font-size:.82rem}
+.legend span{display:flex;align-items:center;gap:8px}
+.legend i{width:16px;height:16px;border-radius:5px;display:inline-block}
+.stat{margin-top:12px;font-size:.82rem;color:var(--mute)}
+/* modal */
+.ov{position:fixed;inset:0;background:rgba(15,10,50,.82);display:grid;place-items:center;z-index:50;padding:16px}
+.modal{max-width:440px;width:100%;text-align:center}
+.modal .ic{font-size:52px}
+.modal h2{margin:6px 0}
+.modal p{color:var(--mute);line-height:1.5}
+.row{display:flex;gap:10px;margin-top:14px}.row .btn{flex:1}
+.b-gray{background:var(--soft);color:var(--ink)}
+.b-red{background:var(--bad);color:#fff}
+/* result */
+.res{max-width:520px;margin:5vh auto 0;text-align:center}
+.score{width:170px;height:170px;border-radius:50%;margin:14px auto;display:grid;place-items:center;color:#fff;font-size:3.2rem;font-weight:900;background:conic-gradient(var(--c,#16a34a) calc(var(--p)*1%),rgba(148,163,184,.35) 0);position:relative}
+.score::before{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--card)}
+.score span{position:relative;color:var(--ink)}
+.info{text-align:left;margin-top:14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.info div{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);font-size:.95rem}
+.info div:last-child{border:0}.info div span{color:var(--mute)}.info div b{text-align:right}
+.badge{display:inline-block;margin-top:8px;padding:6px 14px;border-radius:999px;font-weight:700;font-size:.85rem}
+.badge.bad{background:#fee2e2;color:#991b1b}
+@media(max-width:820px){.grid{grid-template-columns:1fr}.side{order:-1}.pal{grid-template-columns:repeat(8,1fr)}.wrap{padding:10px}.card{padding:16px}}
+@media(max-width:420px){.pal{grid-template-columns:repeat(6,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- LOGIN -->
+<div id="vLogin" class="card login">
+  <div class="logo">📘</div>
+  <h1>Ujian Akhir Semester Ganjil</h1>
+  <div class="sub">Mata Pelajaran Ekonomi · Kelas XII · T.P. 2026/2027</div>
+  <label for="nama">Nama Siswa</label>
+  <input id="nama" placeholder="Nama lengkap" autocomplete="off">
+  <label for="kelas">Kelas</label>
+  <select id="kelas"><option value="">— Pilih kelas —</option><option>XII 3</option><option>XII 4</option><option>XII 5</option><option>XII 6</option></select>
+  <label for="nopes">Nomor Peserta Didik</label>
+  <input id="nopes" placeholder="Nomor peserta" inputmode="numeric" autocomplete="off">
+  <label for="sekolah">Asal Sekolah</label>
+  <input id="sekolah" value="SMAN 1 Penengahan" readonly>
+  <label for="token">Token</label>
+  <input id="token" placeholder="Masukkan token ujian" autocomplete="off">
+  <div class="err" id="loginErr"></div>
+  <div class="rules"><b>Tata tertib:</b>
+    <ul><li>Waktu ujian <b id="durTxt">90</b> menit, jumlah soal <b>40</b>.</li>
+    <li>Dilarang berpindah tab, membuka jendela lain, atau keluar dari layar penuh.</li>
+    <li>Peringatan hanya <b>satu kali</b>. Pelanggaran kedua mengakhiri ujian otomatis.</li></ul></div>
+  <button class="btn main" id="btnStart">Mulai Ujian 🚀</button>
+</div>
+
+<!-- EXAM -->
+<div id="vExam" class="hide">
+  <div class="top">
+    <div class="who"><b id="hNama"></b><br><span id="hInfo"></span></div>
+    <div class="timer" id="timer">00:00:00</div>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="qhead"><span class="qno" id="qno"></span><span class="flag hide" id="qflag">⚠ Ragu-ragu</span></div>
+      <div class="qtext" id="qtext"></div>
+      <div id="opts"></div>
+      <div class="nav">
+        <button class="btn b-prev" id="bPrev">◀ Sebelumnya</button>
+        <button class="btn b-doubt" id="bDoubt">Ragu-ragu</button>
+        <button class="btn b-next" id="bNext">Selanjutnya ▶</button>
+      </div>
+    </div>
+    <div class="card side">
+      <h3>Navigasi Soal</h3>
+      <div class="pal" id="pal"></div>
+      <div class="legend">
+        <span><i style="background:var(--ok)"></i>Sudah dijawab</span>
+        <span><i style="background:var(--warn)"></i>Ragu-ragu</span>
+        <span><i style="background:var(--none)"></i>Belum dijawab</span>
+      </div>
+      <div class="stat" id="stat"></div>
+      <button class="btn b-fin" style="width:100%;margin-top:14px" id="bFinish">Selesai Ujian ✔</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="vRes" class="card res hide">
+  <div style="font-size:44px" id="rIcon">🎉</div>
+  <h1 id="rTitle">Ujian Selesai</h1>
+  <div class="sub">Nilai Akhir</div>
+  <div class="score" id="score"><span id="rScore">0</span></div>
+  <div id="rBadge"></div>
+  <div class="info">
+    <div><span>Nama</span><b id="rNama"></b></div>
+    <div><span>Kelas</span><b id="rKelas"></b></div>
+    <div><span>Nomor Peserta</span><b id="rNopes"></b></div>
+    <div><span>Asal Sekolah</span><b id="rSek"></b></div>
+    <div><span>Jawaban Benar</span><b id="rBenar"></b></div>
+  </div>
+  <div class="sub" style="margin-top:14px">Silakan tutup halaman ini. Terima kasih.</div>
+</div>
+</div>
+
+<!-- MODALS -->
+<div class="ov hide" id="ovWarn"><div class="card modal"><div class="ic">🚨</div><h2>Peringatan Kecurangan!</h2>
+<p id="warnMsg"></p><p><b>Ini peringatan satu-satunya.</b> Jika terulang, ujian dihentikan otomatis dan nilai langsung dihitung.</p>
+<button class="btn main" id="warnOk">Saya mengerti, lanjutkan</button></div></div>
+<div class="ov hide" id="ovConf"><div class="card modal"><div class="ic">📝</div><h2>Selesaikan ujian?</h2>
+<p id="confMsg"></p><div class="row"><button class="btn b-gray" id="confNo">Kembali</button><button class="btn b-fin" id="confYes">Ya, selesai</button></div></div></div>
+
+<script>
+var BANK=[{"q": "Setiap akuntan harus memperhatikan etika profesi dalam menjalankan tugasnya. Berikut pernyataan yang tepat berkaitan dengan etika profesi akuntan dan tugasnya adalah ….", "o": ["Integritas, akuntan dapat mengubah data keuangan yang tidak wajar agar laporan keuangan seimbang", "Kerahasiaan; akuntan dapat mengabaikan kerahasiaan jika ada pihak yangmembutuhkan informasi akuntansi", "Perilaku profesional; akuntan harus menghindari perilaku yang dapat membuat buruk citra profesi akuntan", "Objektifitas; akuntan harus mengutamakan kelangsungan profesi akuntan ketika menjalankan tugasnya", "Kompetensi dankehati-hatian professional; akuntan harus bekerja secara cepat dan teliti demikepuasan klien"], "k": 2}, {"q": "Perusahaan membeli perlengkapan secara kredit sebesar Rp2.500.000,00. Pengaruh transaksi tersebut terhadap persamaan dasar akuntansi adalah ....", "o": ["Aset bertambah dan kewajiban bertambah", "Aset bertambah dan modal bertambah", "Aset berkurang dan modal berkurang", "Total aset tidak berubah, hanya komposisi aset berubah", "Kewajiban bertambah dan modal bertambah"], "k": 0}, {"q": "Perhatikan berbagai jenis akun dibawah ini:<br>(1) Gaji terutang<br>(2) Iklan dibayar dimuka<br>(3) Perlengkapan<br>(4) Pendapatan yang masih harus diterima<br>(5) Pendapatan diterima dimuka<br>Berdasarkan akun-akun diatas, yang termasuk akun asset adalah nomor …", "o": ["(1), (2), dan (3)", "(1), (3), dan (5)", "(2), (3), dan (4)", "(2), (4), dan (5)", "(3), (4), dan (5)"], "k": 2}, {"q": "Perusahaan menerima pembayaran piutang sebesar Rp4.000.000,00 secara tunai. Pengaruh transaksi tersebut adalah ....", "o": ["Aset bertambah Rp4.000.000,00", "Aset berkurang Rp4.000.000,00", "Total aset tidak berubah, hanya komposisi aset berubah", "Kewajiban berkurang Rp4.000.000,00", "Modal bertambah Rp4.000.000,00"], "k": 2}, {"q": "Perhatikan ilustrasi berikut!<br>Usaha “Maju Bersama” milik Andi mengalami peningkatan transaksi selama bulan Januari. Pemilik usaha menyetor modal tunai Rp15.000.000,00. Perusahaan membeli perlengkapan tunai Rp2.000.000,00 dan membeli peralatan secara kredit Rp5.000.000,00.<br>Berdasarkan transaksi tersebut, jumlah aset dan kewajiban perusahaan adalah ....", "o": ["Aset Rp15.000.000,00 dan kewajiban Rp2.000.000,00", "Aset Rp17.000.000,00 dan kewajiban Rp5.000.000,00", "Aset Rp20.000.000,00 dan kewajiban Rp5.000.000,00", "Aset Rp22.000.000,00 dan kewajiban Rp7.000.000,00", "Aset Rp18.000.000,00 dan kewajiban Rp3.000.000,00"], "k": 2}, {"q": "Perusahaan menerima pendapatan jasa tunai sebesar Rp3.000.000,00. Pengaruh transaksi tersebut adalah ....", "o": ["aset bertambah dan modal bertambah", "aset bertambah dan utang bertambah", "aset berkurang dan modal bertambah", "modal berkurang dan aset bertambah", "utang berkurang dan modal bertambah"], "k": 0}, {"q": "Perhatikan transaksi berikut:<br>1)  Ibu Tini sebagai pemilik usaha catering menerima pesanan makanan sebesar Rp2.000.000,00<br>2)  Oktavia pemilik biro wisata mengambil uang sebesar Rp850.000,00 untuk keperluan pribadi<br>3)  Perusahaan membayar gaji untuk empat karyawan sebesar Rp8.000.000,00<br>Transaksi tersebut dalam pencatatan persamaan dasar akuntansi akan mempengaruhi ….", "o": ["Harta dan utang", "Harta dan modal", "Utang dan modal", "Utang dan piutang", "Harta dan investasi"], "k": 1}, {"q": "Pak Roni, pemilik “Gas Pool”, melakukan dua transaksi yang berkaitan dengan dana pribadinya, namun mempengaruhi perusahaannya:<br>1)  Mengambil uang kas bengkel sebesar Rp1.000.000,00 untuk keperluan keluarga (prive).<br>2)  Menambah investasi dengan menyetor mobil pribadinya senilai Rp80.000.000,00 untuk digunakan sebagai kendaraan operasional bengkel.<br>Dalam persamaan dasar akuntansi, transaksi yang dilakukan Pak Roni secara langsung memengaruhi unsur...", "o": ["Kewajiban dan Ekuitas Pemilik.", "Pendapatan dan Beban.", "Hanya Aset dan Beban.", "Aset dan Kewajiban.", "Aset dan Ekuitas Pemilik."], "k": 4}, {"q": "Jika dalam periode yang sama total aktiva meningkat Rp 64.000.000,00 dan total kewajiban meningkat Rp 24.000.000,0, Jumlah ekuitas pemilik dalam periode tersebut adalah…", "o": ["Naik RP 64.000.000,00", "Naik Rp 16.000.000,00", "Turun Rp 16.000.000,00", "Naik Rp 40.000.000,00", "Naik Rp 24.000.000,00"], "k": 3}, {"q": "Sebuah transaksi menyebabkan kenaikan sebesar Rp 55.000.000,00 baik pada sisi total asset maupun total kewajiban. Jenis transaksi yang mungkin terjadi adalah….", "o": ["Pembelian peralatan kantor secara tunai sebesar RP 55.000.000,00", "Pembelian peralatan kantor seharga Rp 120.000.000,00, pembayaran secara tunai Rp 65.000.000,00 dan sisanya dibayar dengan utang wesel Rp 55.000.000,00", "Pembayaran sebesar Rp 55.000.000,00 untuk melunasi utang bank", "Investasi sevesar Rp 55.000.000,00 secara tunai oleh pemilik", "Setoran dari pemilik Rp 55.000.000,00"], "k": 1}, {"q": "Pertumbuhan ekonomi merupakan salah satu asumsi dalam penyusunan APBN. Jika dinyatakan asumsi pertumbuhan ekonomi tahun 2024 sebesar 5,2%, sedangkan tahun 2025 5,1%, maka dapat dijelaskan bahwa ….", "o": ["GDP tahun 2024 lebih tinggi dari GDP tahun 2025", "GDP tahun 2024 mengalami penurunan sebesar 0,1% dari tahun 2025", "GDP paling tinggi terjadi pada tahun 2024", "Kenaikan GDP tahun 2019 ke tahun 2024 lebih rendah dari kenaikan GDP tahun 220 ke tahun 2025", "Kenaikan GDP tahun 2023 ke tahun 2024 lebih tinggi dari kenaikan GDP tahun 2024 ke tahun 2025"], "k": 4}, {"q": "Tabel di bawah ini menginformasikan perbedaan pertumbuhan ekonomi dan pembangunan ekonomi:<br><img class=\"qimg\" alt=\"Tabel perbedaan pertumbuhan dan pembangunan ekonomi\" src=\"data:image/png;base64,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\"><br>Berdasarkan tabel tersebut, pernyataan yang benar adalah ….", "o": ["Pernyataan E", "Pernyataan D", "Pernyataan C", "Pernyataan B", "Pernyataan A"], "k": 4}, {"q": "Berikut tujuan serta prinsip penyusunan APBN<br>1)  Sebagai bentuk pertanggungjawaban pemerintah dalam menggunakan pendapatan dari masyarakat<br>2)  Intensifikasi penerimaan anggaran dalam hal jumlah dan kecepatan penyetoran<br>3)  Sumber data yang akurat bagi rakyat dalam mengevaluasi kinerja pemerintah<br>4)  Memberikan arahan pada pemerintah dalam pelaksanaan fungsi yang diembannya<br>5)  Memperlihatkan potensi nasional dalam penggunaan hasil produksi dalam negeri<br>Dari pernyataan diatas yang merupakan tujuan penyusunan APBN ditunjukan pada nomer….", "o": ["2), 3), dan 4)", "2), 4), dan 5)", "1), 2), dan 3)", "1), 3), dan 4)", "1), 3), dan 5)"], "k": 3}, {"q": "Perhatikan pernyataan mengenai APBN berikut!<br>1)  Presiden menyampaikan APBN sebagai nota keuangan (NK) dan dokumen pendukung<br>2)  Jika ditolak RAPBN akan direvisi kemudian diajukan kembali kepada DPR dana tau menggunakan APBN tahun lalu<br>3)  Jika RAPBN disetujui DPR, maka RAPBN akan disahkan menjadi APBN dalam rapat pembahasan<br>4)  RAPBN beserta Nota Keuangan (NK) dibahas dalam rapat paripurna dilanjutkan Rapat Kerja Badan Anggaran dengan Pemerintah (Menkeu) dan Gubernur BI<br>5)  Pimpinan DPR memberitahu rencana pembahasan RAPBN<br>Mekanisme penyusunan APBN yang benar berdasarkan urutan nomer ….", "o": ["1)-2)-3)-4)-5)", "1)-5)-4)-3)-2)", "4)-1)-3)-2)-5)", "5)-4)-3)-1)-2)", "5)-4)-3)-2)-1)"], "k": 1}, {"q": "Kota “Damai” adalah daerah memiliki wilayah pegunungan dan perbukitan yang menjadi tujuan wisata agrobisnis, selama dua tahun terakhir mengalami penurunan Pendapatan Asli Daerah (PAD). Setelah dianalisis, penyebab utamanya adalah lesunya sektor pariwisata karena banyak terjadi bencana alam sehingga mengurangi retribusi. Berdasarkan analisis tersebut, sumber PAD manakah yang paling terdampak…", "o": ["Dana Alokasi Umum (DAU)", "Dana Bagi Hasil (DBH) Pajak", "Retribusi Daerah dan Pajak Hiburan", "Dana Alokasi Khusus (DAK)", "Hibah dari pemerintah pusat"], "k": 2}, {"q": "Peranan APBN dalam pembangunan ekonomi berfungsi secara sinergis berperan besar dalam perbaikan dan penguatan fundamental perekonomian. Berikut ini yang tidak termasuk hal hal yang dapat memperkuat fundamental perekonomian, yaitu….", "o": ["Mendorong pertumbuhan ekonomi yang berkelanjutan", "Menciptakan dan memperluas lapangan kerja produktif untuk menurunkan tingkat pengangguran", "Meningkatkan PDB dan kualitas hidup seperti transportasi, telekomunikasi, kelistrikan dan irigasi", "Menjaga stabilitas ekonomi khususnya stabilitas harga", "Memperbaiki distribusi pendapatan dalam mengurangi tingkat kemiskinan"], "k": 2}, {"q": "Sumber-sumber Pendapatan Asli Daerah (PAD) adalah sebagai berikut, kecuali….", "o": ["Pajak daerah", "Retribusi derah", "Dana alokasi umum", "Penerimaan lain-lain", "Laba badan usaha milik daerah"], "k": 2}, {"q": "Perhatikan komponen APBN dan APBD berikut:<br>1.  Bea perolehan hak tanah dan bangunan<br>2.  Pajak perdagangan internasional<br>3.  Bagi hasil dan bantuan keuangan<br>4.  Bagian laba BUMN<br>5.  Subsidi BBM dan non-BBM<br>Komponen APBN ditunjukkan oleh nomor….", "o": ["1, 2, dan 3", "1, 3, dan 4", "1, 4, dan 5", "2, 3, dan 4", "2, 4, dan 5"], "k": 4}, {"q": "Hani berkunjung ke tempat wisata Pantai. Pada saat masuk lokasi wisata Hani dan keluarganya membayar sejumlah uang kepada petugas resmi dari pemerintah daerah setempat, agar bisa masuk ke lokasi wisata. Jenis iuran yang dibayarkan Hani dikategorikan…", "o": ["Pajak Hiburan", "Pajak Tempat Pariwisata", "Retribusi", "Sumbangan", "Bea masuk"], "k": 2}, {"q": "Kontribusi wajib kepada negara yang terutang oleh orang pribadi atau badan yang bersifat memaksa berdasarkan Undang-Undang, dengan tidak mendapatkan imbalan secara langsung dan digunakan untuk keperluan negara bagi sebesar-besarnya kemakmuran rakyat disebut… .", "o": ["Cukai", "Pajak", "Retribusi", "Sumbangan", "Bea masuk"], "k": 1}, {"q": "Jika pemerintah memungut pajak dimana persentase yang lebih besar pada tingkat pendapatan yang tinggi daripada tingkat pendapatan yang rendah maka ini merupakan pajak… .", "o": ["Progresif", "Regresif", "Proporsional", "Penjualan", "Nilai tambah"], "k": 0}, {"q": "Berikut data Bumi dan Bangunan yang dimiliki Pak Rudi :<br>Tanah luas 400m² dengan nilai jual ual tanah Rp 200.000.,00 per m²<br>Bangunan Luas 250 m² dengan nilai jual Rp 200.000,00 per m²<br>Nilai jual bangunan tidak kena pajak Rp 12.000.000,00<br>Nilai jual kena pajak ditetapkan 20% dari pajak bumi dan bangunan 0,5%.<br>Pajak Bumi dan Bangunan yang harus di bayar sebesar ....", "o": ["Rp 118.000,00", "Rp 120.000,00", "Rp 128.000,00", "Rp 200.000,00", "Rp 280.000,00"], "k": 0}, {"q": "Tabel pendapatan dari tarif pajak<div class=\"tw\"><table><tr><th>Pendapatan Kena Pajak</th><th>Tarif I</th><th>Tarif II</th><th>Tarif III</th><th>Tarif IV</th><th>Tarif V</th></tr><tr><td>Rp 20 juta</td><td>Rp 2 juta</td><td>20 %</td><td>10 %</td><td>10 %</td><td>30 %</td></tr><tr><td>Rp 40 juta</td><td>Rp 2 juta</td><td>20 %</td><td>15 %</td><td>9 %</td><td>20 %</td></tr><tr><td>Rp 60 juta</td><td>Rp 2 juta</td><td>20 %</td><td>20 %</td><td>8 %</td><td>10 %</td></tr></table></div>Berdasarkan tabel di atas, Tabel nomor III merupakan tarif pajak ….", "o": ["Tetap", "Proporsional", "Progresif", "Degresif", "Regresif"], "k": 2}, {"q": "Berikut ini disajikan sumber pendapatan pemerintah pusat dan daerah:<br>1.  Pajak penghasilan<br>2.  bagian laba BUMN<br>3.  Pajak dan retribusi daerah<br>4.  bea masuk dan pajak impor<br>5.  bagian daerah dan bagi hasil<br>Dari sumber pendapatan di atas, yang termasuk pendapatan daerah adalah….", "o": ["1 dan 2", "2 dan 3", "3 dan 4", "3 dan 5", "4 dan 5"], "k": 3}, {"q": "Setelah melalui perhitungan Tuan Arga memiliki PKP pertahun sebesar Rp60.400.000,00. Jika tarif PPh dan besaran penghasilan kena pajak (PKP):<div class=\"tw\"><table><tr><th>No</th><th>PKP (Penghasilan Kena Pajak)</th><th>Tarif</th></tr><tr><td>1</td><td>PKP sampai dengan Rp50.000.000,00</td><td>5%</td></tr><tr><td>2</td><td>PKP Rp50.000.000,00 sampai dengan Rp250.000.000,00</td><td>15%</td></tr><tr><td>3</td><td>PKP Rp250.000.000,00 sampai dengan Rp500.000.000,00</td><td>25%</td></tr><tr><td>4</td><td>PKP di atas Rp500.000.000,00</td><td>30%</td></tr></table></div>Dan besarnya PTKP:<ul><li>Rp54.000.000,00 untuk diri Wajib Pajak Orang Pribadi</li><li>Rp4.500.000,00 tambahan untuk wajib pajak yang kawin</li><li>Rp4.500.000,00 tambahan untuk setiap anggota keluarga sedarah dan semenda dalam garis keturunan lurus serta anak angkat yang menjadi tanggungan sepenuhnya, paling banyak 3 orang untuk setiap keluarga</li></ul>Besarnya PPh terutang Tn Arga dalam 1 tahun ….", "o": ["Rp 4.060.000,00", "Rp 4.024.000,00", "Rp 4.010.000,00", "Rp 4.000.000,00", "Rp 3.960.000,00"], "k": 0}, {"q": "Berikut ini yang termasuk instrument kebijakan fiskal adalah….", "o": ["Pajak dan subsidi", "Pajak dan pinjaman pemerintah", "Pajak dan pengeluaran pemerintah", "Subsidi dan dana perimbangan", "Transfer pemerintah dan pinjaman pemerintah"], "k": 2}, {"q": "Apabila realisasi pengeluaran melebihi realisasi penerimaan negara maka pemerintah menjalankan kebijakan anggaran yang….", "o": ["Surplus", "Seimbang", "Tetap", "defisit", "dinamis"], "k": 3}, {"q": "Dampak kenaikan tarif pajak terhadap penerimaan pajak pemerintah dan pendapatan nasional suatu negara adalah….", "o": ["Pajak naik dan pendapatan nasional juga naik", "Pajak naik tetapi pendapatan nasional turun", "Pajak turun dan Pendapatan nasional turun", "Pajak turun tetapi pendapatan nasional naik", "Pajak naik dan pendapatan nasional bisa naik dan bisa turun"], "k": 1}, {"q": "Negara Indonesia mampu memproduksi kopi dengan biaya peluang yang lebih rendah dibandingkan dengan negara lain, sedangkan Jepang memiliki biaya peluang yang lebih rendah dalam produksi kendaraan. Berdasarkan teori keunggulan komparatif David Ricardo, Tindakan yang paling tepat dilakukan dengan kedua negara adalah….", "o": ["Membatasi impor agar kebutuhan dalam negeri tepenuhi seluruhnya", "Memproduksi semua barang secara mandiri tanpa melakukan perdagangan", "Melakukan spesialisasi produksi sesuai keunggulan komparatif dan melakukan perdagangan", "Meningkatkan tarif impor untuk seluruh jenis barang dari negara mitra", "Menghentikan ekspor agar persediaan barang dalam negeri tetap tinggi"], "k": 2}, {"q": "Salah satu manfaat perdagangan internasional bagi perekonomian suatu negara adalah meningkatnya kesempatan kerja. Kondisi yang paling tepat menjelaskan manfaat tersebut adalah….", "o": ["Pemerintah melarang masuknya seluruh barang dari luar negeri", "Perusahaan meningkatkan produksi untuk memenuhi permintaan ekspor yang meningkat", "Masyarakat mengurangi konsumsi barang yang dihasilkan dalam negeri", "Perusahaan menghentikan penggunaan teknologi dalam proses produksi", "Pemerintah membatasi kegiatan produksi perusahaan yang berorientasi ekspor"], "k": 1}, {"q": "Dalam kerjasama perdagangan internasional telah disepakati adanya perdagangan bebas, baik yang bersifat regional maupun antar regional seperti EFTA, NAFTA, AFEC, CAFTA, dan sebagainya. Sementara itu dibangunlah kebijakan perdagangan internasional seperti:<br>1)  Quota<br>2)  Tarif<br>3)  Larangan Ekspor dan Impor<br>4)  Premi/subsidi<br>5)  Diskriminasi harga dan Dumping<br>Kebijakan perdagangan Internasional yang langsung dapat melindungi produksi dalam negeri adalah ….", "o": ["1), 2), dan 3)", "1), 3), dan 4)", "2), 3), dan 5)", "2), 4), dan 6)", "4), 5), dan 6)"], "k": 0}, {"q": "Pemerintah suatu negara menetapkan batas maksimum impor gula sebanyak 100.000 ton per tahun untuk melindungi petani gula domestik. Kebijakan perdagangan internasional tersebut disebut….", "o": ["Tarif impor", "Subsidi ekspor", "Dumping", "Kuota impor", "Devaluasi"], "k": 3}, {"q": "Pemerintah memberikan subsidi kepada perusahaan dalam negeri yang mengekspor produk pertanian. Dampak yang diharapkan dari kebijakan tersebut adalah….", "o": ["Biaya produksi eksportir meningkat sehingga harga ekspor menjadi lebih mahal", "Daya saing produk ekspor meningkat karena beban biaya perusahaan dapat berkurang", "Jumlah produk produk yang dijual ke luar negeri pasti menurun", "Impor produk pertanian otomatis berhenti sepenuhnya", "Nilai mata uang domestic pasti menguat"], "k": 1}, {"q": "Salah satu peran organisasi World Trade Organization (WTO) dalam perdagangan internasional adalah….", "o": ["Menentukan seluruh harga barang yang diperdagangkan antarnegara", "Menggatikan fungsi bank central setiap negara anggota", "Menghapus semua kebijakan ekonomi domestic negara anggota", "Mengatur produksi barang seluruh perusahaan di dunia", "Memfasilitasi aturan perdagangan multilateral dan penyelesaian sengketa perdagangan"], "k": 4}, {"q": "Indonesia mengimpor gandum dari Australia karena kebutuhan gandum dalam negeri belum dapat dipenuhi oleh produksi domestik. Hal ini menunjukkan bahwa perdagangan internasional dapat….", "o": ["Menghilangkan kebutuhan negara terhadap produksi dalam negeri", "Menyebabkan semua negara memiliki sumber daya alam yang sama", "Memenuhi kebutuhan masyarakat melalui pertukaran barang antar negara", "Menjamin harga semua barang menjadi lebih murah secara permanen", "Menghapus ketergantungan ekonomi antar negara sepenuhnya"], "k": 2}, {"q": "Perhatikan manfaat perdagangan internasional berikut:<br>1.  Memperluas pasar bagi produk dalam negeri<br>2.  Memperoleh barang yang tidak dapat diproduksi sendiri<br>3.  Mendorong transfer teknologi antarnegara<br>4.  Menghilangkan seluruh resiko persaingan bagi produsen dometik<br>5.  Menjamin semua negara memperoleh keuntungan yang sama besar<br>Manfaat perdagangan internasional ditunjukkan oleh nomor….", "o": ["1, 2, dan 3", "1, 2, dan 4", "1, 3, dan 5", "2, 4, dan 5", "3, 4, dan 5"], "k": 0}, {"q": "Neraca perdagangan suatu negara mencatat nilai ekspor barang sebesar US$ 250 juta dan nilai impor barang sebesar US$ 300 juta dalam satu tahun. Berdasarkan data tersebut, kondisi neraca perdagangan negara tersebut adalah….", "o": ["Surplus sebesar US$ 50 juta", "Surplus sebesar US$ 550 juta", "Seimbang karena nilai ekspor dan impor hampir sama", "Defisit sebesar US$ 50 juta", "Defisit sebesar US$550 juta"], "k": 3}, {"q": "Ketika nilai tukar rupiah melemah terhadap dolar Amerika Serikat, dampak yang cenderung terjadi bagi eksportir Indonesia adalah….", "o": ["Harga barang ekspor Indonesia menjadi lebih mahal bagi pembeli luar negeri", "Pendapatan rupiah dari setiap dolar hasil ekspor cenderung meningkat", "Barang impor menjadi lebih murah bagi konsumen Indonesia"], "k": 1}, {"q": "Negara cakrawala mengalami defisit neraca perdagangan karena ketergantungan yang tinggi terhadap impor bahan baku dan barang konsumsi. Pemerintah berupaya memperbaiki kondisi tersebut dengan mendorong industri substitusi impor, meningkatkan kualitas produk ekspor, dan memperluas pasar internasional bagi produk dalam negeri.<br>Kebijakan yang dilakukan pemerintah tersebut bertujuan untuk….", "o": ["Meningkatkan impor agar kebutuhan domestik semakin bergantung pada produk asing", "Mengurangi ekspor untuk menjaga ketersediaan barang di pasar domestic", "Meningkatkan pembayaran pendapatan primer ke luar negeri", "Memperbaiki neraca perdagangan melalui pengurangan ketergantungan impor dan peningkatan ekspor", "Menghentikan seluruh transaksi modal dan finansial dengan negara lain"], "k": 3}, {"q": "Pemerintah suatu negara ingin meningkatkan penerimaan devisa secara berkelanjutan. Negara tersebut memiliki potensi di sektor pertanian, industri pengolahan, dan pariwisata. Akan tetapi, beberapa produk ekspornya masih memiliki kualitas yang belum konsisten, sedangkan fasilitas wisata belum memadai untuk menarik wisatawan mancanegara dalam jumlah lebih besar.<br>Berdasarkan wacana tersebut, strategi yang paling tepat untuk meningkatkan devisa adalah….", "o": ["Meningkatkan impor barang kondumsi dan mengurangi produksi ekspor", "Mengandalkan pinjaman luar negeri sebagai satu-satunya sumber devisa", "Mengurangi promosi pariwisata dan membatasi penjualan produk ke luar negeri", "Menjual sumber daya alam tanpa meningkatkan nilai tambah produk", "Meningkatkan kualitas produk ekspor, mengembangkan industri pengolahan, dan memperbaiki layanan pariwisata"], "k": 4}];
+var TOKEN="Ekonomi12", DURASI=90, MAX_WARN=1, STORE="ujian_eko12_v1";
+var $=function(i){return document.getElementById(i)};
+var S=null, tick=null, graceUntil=0, lastViol=0, locked=false;
+
+function load(){try{var r=localStorage.getItem(STORE);return r?JSON.parse(r):null}catch(e){return null}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function fmt(n){return (n<10?"0":"")+n}
+function show(id){["vLogin","vExam","vRes"].forEach(function(v){$(v).classList.toggle("hide",v!==id)})}
+function isBlocked(){return S&&S.done}
+
+$("durTxt").textContent=DURASI;
+
+$("btnStart").onclick=function(){
+  var n=$("nama").value.trim(),k=$("kelas").value,p=$("nopes").value.trim(),t=$("token").value.trim();
+  var e=$("loginErr");
+  if(!n||!k||!p){e.textContent="Lengkapi nama, kelas, dan nomor peserta.";return}
+  if(t!==TOKEN){e.textContent="Token salah. Minta token kepada pengawas.";return}
+  S={nama:n,kelas:k,nopes:p,sekolah:"SMAN 1 Penengahan",order:shuffle(BANK.map(function(_,i){return i})),
+     ans:{},doubt:{},cur:0,end:Date.now()+DURASI*60000,warn:0,done:false,reason:""};
+  save();
+  goFull();
+  startExam();
+};
+
+function goFull(){try{var d=document.documentElement;var f=d.requestFullscreen||d.webkitRequestFullscreen;if(f){var r=f.call(d);if(r&&r.catch)r.catch(function(){})}}catch(e){}}
+function inFull(){return !!(document.fullscreenElement||document.webkitFullscreenElement)}
+
+function startExam(){
+  show("vExam");
+  $("hNama").textContent=S.nama;
+  $("hInfo").textContent=S.kelas+" · No. Peserta "+S.nopes+" · "+S.sekolah;
+  graceUntil=Date.now()+2500;
+  buildPal();render();
+  clearInterval(tick);tick=setInterval(tickFn,500);tickFn();
+}
+
+function tickFn(){
+  var left=Math.max(0,Math.round((S.end-Date.now())/1000));
+  var h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60;
+  var el=$("timer");el.textContent=fmt(h)+":"+fmt(m)+":"+fmt(s);
+  el.classList.toggle("low",left<=300);
+  if(left<=0)finish("Waktu habis");
+}
+
+function buildPal(){
+  var p=$("pal");p.innerHTML="";
+  for(var i=0;i<S.order.length;i++){(function(i){
+    var b=document.createElement("button");b.textContent=i+1;b.id="pb"+i;
+    b.onclick=function(){go(i)};p.appendChild(b);})(i)}
+}
+function palState(){
+  var a=0,d=0;
+  for(var i=0;i<S.order.length;i++){
+    var id=S.order[i],b=$("pb"+i);
+    var has=S.ans[id]!==undefined,db=!!S.doubt[id];
+    b.className=(db?"dbt":has?"ans":"")+(i===S.cur?" cur":"");
+    if(has)a++;if(db)d++;
+  }
+  $("stat").textContent="Dijawab: "+a+" · Ragu-ragu: "+d+" · Belum: "+(S.order.length-a);
+}
+function go(i){S.cur=i;save();render()}
+function render(){
+  var i=S.cur,id=S.order[i],q=BANK[id];
+  $("qno").textContent="Soal "+(i+1)+" dari "+S.order.length;
+  $("qtext").innerHTML=q.q;
+  var o=$("opts");o.innerHTML="";
+  q.o.forEach(function(t,k){
+    var b=document.createElement("button");b.className="opt"+(S.ans[id]===k?" sel":"");
+    b.innerHTML='<span class="l">'+"ABCDE"[k]+'</span><span>'+t+'</span>';
+    b.onclick=function(){S.ans[id]=k;save();render()};
+    o.appendChild(b);
+  });
+  var db=!!S.doubt[id];
+  $("qflag").classList.toggle("hide",!db);
+  $("bDoubt").classList.toggle("on",db);
+  $("bDoubt").textContent=db?"✓ Ragu-ragu (batalkan)":"Ragu-ragu";
+  $("bPrev").style.visibility=i===0?"hidden":"visible";
+  var last=i===S.order.length-1;
+  $("bNext").textContent=last?"Soal Terakhir":"Selanjutnya ▶";
+  $("bNext").disabled=last;$("bNext").style.opacity=last?.5:1;
+  palState();window.scrollTo(0,0);
+}
+$("bPrev").onclick=function(){if(S.cur>0)go(S.cur-1)};
+$("bNext").onclick=function(){if(S.cur<S.order.length-1)go(S.cur+1)};
+$("bDoubt").onclick=function(){var id=S.order[S.cur];if(S.doubt[id])delete S.doubt[id];else S.doubt[id]=1;save();render()};
+
+$("bFinish").onclick=function(){
+  var a=Object.keys(S.ans).length,d=Object.keys(S.doubt).length,u=S.order.length-a;
+  $("confMsg").textContent="Belum dijawab: "+u+" soal. Ragu-ragu: "+d+" soal. Setelah selesai, jawaban tidak dapat diubah.";
+  $("ovConf").classList.remove("hide");
+};
+$("confNo").onclick=function(){$("ovConf").classList.add("hide")};
+$("confYes").onclick=function(){$("ovConf").classList.add("hide");finish("")};
+
+function finish(reason){
+  if(S.done)return;
+  S.done=true;S.reason=reason;S.score=null;save();
+  clearInterval(tick);
+  $("ovWarn").classList.add("hide");$("ovConf").classList.add("hide");
+  try{var x=document.exitFullscreen||document.webkitExitFullscreen;if(x&&inFull()){var r=x.call(document);if(r&&r.catch)r.catch(function(){})}}catch(e){}
+  showResult();
+}
+function showResult(){
+  var benar=0;
+  BANK.forEach(function(q,i){if(S.ans[i]===q.k)benar++});
+  var nilai=Math.round(benar/BANK.length*100*100)/100;
+  show("vRes");
+  $("rNama").textContent=S.nama;$("rKelas").textContent=S.kelas;
+  $("rNopes").textContent=S.nopes;$("rSek").textContent=S.sekolah;
+  $("rBenar").textContent=benar+" dari "+BANK.length;
+  $("rScore").textContent=(nilai%1===0?nilai:nilai.toFixed(1));
+  var sc=$("score");sc.style.setProperty("--p",nilai);
+  sc.style.setProperty("--c",nilai>=75?"#16a34a":nilai>=50?"#f59e0b":"#dc2626");
+  var bad=S.reason&&S.reason.indexOf("curang")>-1;
+  $("rIcon").textContent=bad?"⛔":"🎉";
+  $("rTitle").textContent=bad?"Ujian Dihentikan":"Ujian Selesai";
+  $("rBadge").innerHTML=S.reason?'<span class="badge bad">'+S.reason+'</span>':"";
+}
+
+/* ===== ANTI CURANG ===== */
+function violation(msg){
+  if(!S||S.done||locked)return;
+  var now=Date.now();
+  if(now<graceUntil||now-lastViol<1500)return;
+  lastViol=now;
+  if($("vExam").classList.contains("hide"))return;
+  S.warn=(S.warn||0)+1;save();
+  if(S.warn>MAX_WARN){finish("Dihentikan: terdeteksi kecurangan ("+msg+")");return}
+  $("warnMsg").textContent="Terdeteksi: "+msg+".";
+  $("ovWarn").classList.remove("hide");
+}
+$("warnOk").onclick=function(){$("ovWarn").classList.add("hide");graceUntil=Date.now()+1500;if(!inFull())goFull()};
+
+document.addEventListener("visibilitychange",function(){if(document.hidden)violation("berpindah tab / aplikasi lain")});
+window.addEventListener("blur",function(){setTimeout(function(){if(!document.hasFocus())violation("meninggalkan jendela ujian")},250)});
+window.addEventListener("pagehide",function(){if(S&&!S.done){S.leave=1;save()}});
+document.addEventListener("fullscreenchange",function(){if(!inFull())violation("keluar dari layar penuh")});
+document.addEventListener("webkitfullscreenchange",function(){if(!inFull())violation("keluar dari layar penuh")});
+var mx=0,my=0;
+window.addEventListener("resize",function(){
+  if(!S||S.done||$("vExam").classList.contains("hide"))return;
+  var sw=screen.availWidth||screen.width,sh=screen.availHeight||screen.height;
+  if(window.innerWidth<sw*0.7||window.innerHeight<sh*0.55)violation("membuka jendela layar lain / split screen");
+});
+["contextmenu","copy","cut","paste","dragstart","selectstart"].forEach(function(ev){
+  document.addEventListener(ev,function(e){var t=e.target;if(t&&(t.tagName==="INPUT"||t.tagName==="SELECT")&&ev!=="contextmenu"&&ev!=="dragstart")return;e.preventDefault()})});
+document.addEventListener("keydown",function(e){
+  var k=(e.key||"").toLowerCase();
+  if(!S||S.done||$("vExam").classList.contains("hide"))return;
+  if(e.key==="F12"||e.key==="F11"||e.key==="PrintScreen"||e.key==="Meta"||e.key==="OS"||e.key==="Escape"||e.altKey&&e.key==="Tab"||
+    (e.ctrlKey||e.metaKey)&&["c","v","x","u","s","p","a","i","j","t","n","w","r"].indexOf(k)>-1||(e.ctrlKey&&e.shiftKey&&["i","j","c"].indexOf(k)>-1)){
+    e.preventDefault();
+    if(e.key==="Meta"||e.key==="OS"||e.key==="PrintScreen"||e.altKey)violation("menggunakan tombol terlarang");
+  }
+});
+window.addEventListener("beforeunload",function(e){if(S&&!S.done){e.preventDefault();e.returnValue=""}});
+
+/* ===== PEMULIHAN setelah refresh ===== */
+(function(){
+  var r=load();
+  if(!r)return;
+  S=r;
+  $("nama").value=S.nama;$("kelas").value=S.kelas;$("nopes").value=S.nopes;
+  if(S.done){showResult();return}
+  if(Date.now()>=S.end){finish("Waktu habis");return}
+  if(S.leave){ // halaman dimuat ulang saat ujian = dihitung pelanggaran
+    S.leave=0;S.warn=(S.warn||0)+1;save();
+    if(S.warn>MAX_WARN){finish("Dihentikan: terdeteksi kecurangan (memuat ulang halaman)");return}
+    startExam();
+    $("warnMsg").textContent="Terdeteksi: memuat ulang / menutup halaman ujian.";
+    $("ovWarn").classList.remove("hide");
+    return;
+  }
+  startExam();
+})();
+</script>
+</body>
+</html>
